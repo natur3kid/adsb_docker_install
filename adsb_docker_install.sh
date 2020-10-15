@@ -929,7 +929,7 @@ function input_planefinder_details() {
             fi
 
             # make sure the returned JSON contains "success=true"
-            if [[ "$(echo $planefinder_registration_json | jq .success)" == "true" ]]; then
+            if [[ "$(echo "$planefinder_registration_json" | jq .success)" == "true" ]]; then
                 logger_logfile_only "input_planefinder_details" "returned JSON contains 'success=true'"
             else
                 logger "input_planefinder_details" "ERROR: Response from planefinder was not successful :-(" "$LIGHTRED"
@@ -938,7 +938,7 @@ function input_planefinder_details() {
             fi
 
             # make sure we can get the share code
-            if planefinder_sharecode=$(echo $planefinder_registration_json | jq .payload.sharecode | tr -d '"'); then
+            if planefinder_sharecode=$(echo "$planefinder_registration_json" | jq .payload.sharecode | tr -d '"'); then
                 logger "input_planefinder_details" "Your new planefinder sharecode is: $planefinder_sharecode" "$LIGHTGREEN"
                 valid_input=1
                 echo "PLANEFINDER_SHARECODE=$planefinder_sharecode" >> "$PREFSFILE"
@@ -1473,13 +1473,13 @@ function create_docker_compose_yml_file() {
             echo "    depends_on:"
             echo "      - readsb"
             echo "    environment:"
-            echo '      - ALT=${FEEDER_ALT_M}m'
+            echo "      - ALT=${FEEDER_ALT_M}m"
             echo "      - BEASTHOST=readsb"
-            echo '      - LAT=${FEEDER_LAT}'
-            echo '      - LONG=${FEEDER_LONG}'
-            echo '      - SITENAME=${ADSBX_SITENAME}'
-            echo '      - TZ=${FEEDER_TZ}'
-            echo '      - UUID=${ADSBX_UUID}'
+            echo "      - LAT=${FEEDER_LAT}"
+            echo "      - LONG=${FEEDER_LONG}"
+            echo "      - SITENAME=${ADSBX_SITENAME}"
+            echo "      - TZ=${FEEDER_TZ}"
+            echo "      - UUID=${ADSBX_UUID}"
             echo ""
         fi
 
@@ -1498,10 +1498,10 @@ function create_docker_compose_yml_file() {
             echo "      - readsb"
             echo "    environment:"
             echo "      - BEASTHOST=readsb"
-            echo '      - FEEDER_ID=${PIAWARE_FEEDER_ID}'
-            echo '      - LAT=${FEEDER_LAT}'
-            echo '      - LONG=${FEEDER_LONG}'
-            echo '      - TZ=${FEEDER_TZ}'
+            echo "      - FEEDER_ID=${PIAWARE_FEEDER_ID}"
+            echo "      - LAT=${FEEDER_LAT}"
+            echo "      - LONG=${FEEDER_LONG}"
+            echo "      - TZ=${FEEDER_TZ}"
             echo ""
         fi
 
@@ -1519,9 +1519,9 @@ function create_docker_compose_yml_file() {
             echo "      - readsb"
             echo "    environment:"
             echo "      - BEASTHOST=readsb"
-            echo '      - FR24KEY=${FR24_RADAR_ID}'
+            echo "      - FR24KEY=${FR24_RADAR_ID}"
             echo "      - MLAT=yes"
-            echo '      - TZ=${FEEDER_TZ}'
+            echo "      - TZ=${FEEDER_TZ}"
             echo ""
         fi
 
@@ -1537,13 +1537,13 @@ function create_docker_compose_yml_file() {
             echo "    depends_on:"
             echo "      - readsb"
             echo "    environment:"
-            echo '      - ALT=${FEEDER_ALT_M}'
+            echo "      - ALT=${FEEDER_ALT_M}"
             echo "      - BEASTHOST=readsb"
-            echo '      - LAT=${FEEDER_LAT}'
-            echo '      - LONG=${FEEDER_LONG}'
-            echo '      - OPENSKY_SERIAL=${OPENSKY_SERIAL}'
-            echo '      - OPENSKY_USERNAME=${OPENSKY_USERNAME}'
-            echo '      - TZ=${FEEDER_TZ}'
+            echo "      - LAT=${FEEDER_LAT}"
+            echo "      - LONG=${FEEDER_LONG}"
+            echo "      - OPENSKY_SERIAL=${OPENSKY_SERIAL}"
+            echo "      - OPENSKY_USERNAME=${OPENSKY_USERNAME}"
+            echo "      - TZ=${FEEDER_TZ}"
             echo ""
         fi
 
@@ -1561,10 +1561,10 @@ function create_docker_compose_yml_file() {
             echo "      - readsb"
             echo "    environment:"
             echo "      - BEASTHOST=readsb"
-            echo '      - LAT=${FEEDER_LAT}'
-            echo '      - LONG=${FEEDER_LONG}'
-            echo '      - SHARECODE=${PLANEFINDER_SHARECODE}'
-            echo '      - TZ=${FEEDER_TZ}'
+            echo "      - LAT=${FEEDER_LAT}"
+            echo "      - LONG=${FEEDER_LONG}"
+            echo "      - SHARECODE=${PLANEFINDER_SHARECODE}"
+            echo "      - TZ=${FEEDER_TZ}"
             echo ""
         fi
 
@@ -1581,12 +1581,12 @@ function create_docker_compose_yml_file() {
             echo "    depends_on:"
             echo "      - readsb"
             echo "    environment:"
-            echo '      - ALT=${FEEDER_ALT_M}'
+            echo "      - ALT=${FEEDER_ALT_M}"
             echo "      - BEASTHOST=readsb"
-            echo '      - LAT=${FEEDER_LAT}'
-            echo '      - LONG=${FEEDER_LONG}'
-            echo '      - SHARING_KEY=${RADARBOX_SHARING_KEY}'
-            echo '      - TZ=${FEEDER_TZ}'
+            echo "      - LAT=${FEEDER_LAT}"
+            echo "      - LONG=${FEEDER_LONG}"
+            echo "      - SHARING_KEY=${RADARBOX_SHARING_KEY}"
+            echo "      - TZ=${FEEDER_TZ}"
             echo ""
         fi
 
